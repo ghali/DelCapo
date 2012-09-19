@@ -1,0 +1,7 @@
+Commands used to generate the textures:
+
+bggen darkred yellow blue red -r 45 -g 64x64  > terrainGradient.ppm
+
+bggen black red green blue purple black -r 45 -g 64x64 > movingTargetGradient.ppm
+
+These textures are ugly. Do better.
