@@ -95,7 +95,7 @@ QDelaunay_Window::QDelaunay_Window()
     mainLayout->addLayout(uiLayout);
 
     setLayout(mainLayout);
-    setWindowTitle(tr("QDelCapo - Maze"));
+    setWindowTitle(tr("DelCapo - Maze"));
     move(delaunay_hint_to_window_manager);
     // No GL commands can precede QDelaunay_Subwindow::initializeGL().
 }

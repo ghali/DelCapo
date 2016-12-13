@@ -41,7 +41,7 @@ QDelCapo_Window::QDelCapo_Window( Planar_Graph * pg )
     hLayout->addWidget(quitButton);
     setLayout(mainLayout);
 
-    setWindowTitle(tr("QDelCapo"));
+    setWindowTitle(tr("DelCapo"));
 
     connect(wireframeCheckBox, SIGNAL(toggled(bool)),
             this, SLOT(wireframeStateChanged(bool)));
