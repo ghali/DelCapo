@@ -5,4 +5,4 @@ The maze is generated procedurally. The dimensions of the maze can be changed in
 
 A 3D maze is extruded from the procedural maze. The user interface requires the selection of left/right turns at the next junction.
 
-[game](https://raw.githubusercontent.com/ghali/DelCapo/master/sample_images/game.png)
+![game](sample_images/game.png)
