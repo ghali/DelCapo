@@ -3,7 +3,7 @@
 
 The maze is generated procedurally. The dimensions of the maze can be changed interactively using two sliders. The shortest path is illustrated interactively following mouse hovering.
 
-![pre_game](pre_game.png)
+![pre_game](sample_images/pre_game.png)
 
 ## Game
 
