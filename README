@@ -1,0 +1,9 @@
+
+The maze is generated procedurally. The dimensions of the maze can be changed interactively using two sliders. The shortest path is illustrated interactively following mouse hovering.
+
+![alt tag](https://raw.githubusercontent.com/ghali/DelCapo/master/sample_images/game.png)
+
+A 3D maze is extruded from the procedural maze. The user interface requires the selection of left/right turns at the next junction.
+
+![alt tag](https://raw.githubusercontent.com/ghali/DelCapo/master/sample_images/pre_game.png)
+
