@@ -3,13 +3,13 @@
 #include <QtOpenGL>
 #include <QTimer>
 
-#include "player.h"
-#include "maze.h"
-#include "../types/lighting_constants.h"
-#include "../opengl/gldraw_e3.h"
-#include "geometry_E2/predicates_e2.h"
+#include "player.hpp"
+#include "maze.hpp"
+#include "../types/lighting_constants.hpp"
+#include "../opengl/gldraw_e3.hpp"
+#include "geometry_E2/predicates_e2.hpp"
 
-#include "two_d_to_three_d.h"
+#include "two_d_to_three_d.hpp"
 
 // Colors
 const GLfloat PLAYER_BODY_DIFFUSE[] = { 1.0, 1.0, 0.0, 1.0 };
@@ -190,7 +190,7 @@ Player::notify_of_turn(int key)
 
     // An alternative policy is to take a random edge out when reaching a node.
     // edge = get_random_outgoing_edge(N);
-    Direction_E3d direction               = Two_D_to_Three_D::convert(intended_edge->info().direction);
+    // Direction_E3d direction               = Two_D_to_Three_D::convert(intended_edge->info().direction);
     intended_direction_Z_angle_in_degrees = intended_edge->info().z_angle_in_degrees;
 }
 

@@ -14,14 +14,14 @@
 #include <functional>
 
 // QDelCapo
-#include "../types/geometry_types.h"
-#include "../geometry_E2/interpolation_e2.h"
-#include "../opengl/gldraw_e2.h"
+#include "../types/geometry_types.hpp"
+#include "../geometry_E2/interpolation_e2.hpp"
+#include "../opengl/gldraw_e2.hpp"
 
-#include "Qdelaunay_window.h"
-#include "Qdelaunay_subwindow.h"
+#include "Qdelaunay_window.hpp"
+#include "Qdelaunay_subwindow.hpp"
 
-#include "../delcapo/Qdelcapo_window.h"
+#include "../delcapo/Qdelcapo_window.hpp"
 
 const QSize MY_SIZEHINT(640, 480); // 800, 850
 
@@ -131,14 +131,14 @@ void QDelaunay_Subwindow::paintGL()
 void QDelaunay_Subwindow::enterEvent(QEvent *)
 {
     mouse_is_inside_subwindow = true;
-    std::cout << "entering subwindow\n";
+    // std::cout << "entering subwindow\n";
     update();
 }
 
 void QDelaunay_Subwindow::leaveEvent(QEvent *)
 {
     mouse_is_inside_subwindow = false;
-    std::cout << "leaving subwindow\n\n";
+    // std::cout << "leaving subwindow\n\n";
     update();
 }
 

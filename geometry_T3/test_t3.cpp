@@ -4,18 +4,18 @@
 #include <iostream>
 using namespace std;
 
-#include "geometry_T3/point_t3.h"
-#include "geometry_T3/vector_t3.h"
-#include "geometry_T3/segment_t3.h"
-#include "geometry_T3/intersection_t3.h"
-#include "geometry_T3/predicates_t3.h"
+#include "geometry_T3/point_t3.hpp"
+#include "geometry_T3/vector_t3.hpp"
+#include "geometry_T3/segment_t3.hpp"
+#include "geometry_T3/intersection_t3.hpp"
+#include "geometry_T3/predicates_t3.hpp"
 
-#include "geometry_T3/transformation_t3.h"
-#include "unit_cube_intersections_t3.h"
+#include "geometry_T3/transformation_t3.hpp"
+#include "unit_cube_intersections_t3.hpp"
 
-#include "misc/random_t3.h"
+#include "misc/random_t3.hpp"
 
-#include "misc/epsilon_double.h"
+#include "misc/epsilon_double.hpp"
 typedef Epsilon_double MyDouble;
 
 typedef Point_T3<MyDouble>     Point_T3d;

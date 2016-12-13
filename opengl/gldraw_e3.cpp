@@ -3,18 +3,18 @@
 #include <vector>
 #include <stdexcept>
 
-#include "gldraw_e3.h"
+#include "gldraw_e3.hpp"
 
-#include "misc/conversions.h"
-#include "raster_image/array2.h"
+#include "misc/conversions.hpp"
+#include "raster_image/array2.hpp"
 
-#include "../types/lighting_constants.h"
+#include "../types/lighting_constants.hpp"
 
-// #include "colorimage.h"
-#include "misc/color_4.h"
-#include "raster_image/image_color_4.h"
+// #include "colorimage.hpp"
+#include "misc/color_4.hpp"
+#include "raster_image/image_color_4.hpp"
 
-const Color_4f FAKE_SHADOW = BACKGROUND;
+// const Color_4f FAKE_SHADOW = BACKGROUND;
 
 //----------------------------------------------------------------
 void
@@ -271,7 +271,7 @@ GLdraw_E3d::set_static_light(const GLenum    & light,
     const GLfloat d[] = { diffuse.r() , diffuse.g() , diffuse.b(), 1.0 };
     const GLfloat s[] = { specular.r(), specular.g(), specular.b(), 1.0 };
 
-    const GLfloat p[] = { position.hx(), position.hy(), position.hz(), position.hw() };
+    const GLfloat p[] = { float(position.hx()), float(position.hy()), float(position.hz()), float(position.hw()) };
 
     glEnable(light);
 

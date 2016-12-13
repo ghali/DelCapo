@@ -4,7 +4,7 @@
 #include <QApplication>
 
 // Qdelcapo
-#include "delaunay/Qdelaunay_window.h"
+#include "delaunay/Qdelaunay_window.hpp"
 
 // This is the launch point for the application.
 // The secondary launch will be made by QDelaunay_Window to QDelCapo_Window.

@@ -12,13 +12,13 @@
 #include <cassert>
 
 // QDelCapo
-#include "../types/lighting_constants.h"
+#include "../types/lighting_constants.hpp"
 
-#include "delcapo/Qdelcapo_window.h"
-#include "delcapo/Qdelcapo_subwindow.h"
+#include "delcapo/Qdelcapo_window.hpp"
+#include "delcapo/Qdelcapo_subwindow.hpp"
 
-#include "../types/geometry_types.h"
-#include "../opengl/gldraw_e3.h"
+#include "../types/geometry_types.hpp"
+#include "../opengl/gldraw_e3.hpp"
 
 // Window size
 QSize qdelcapo_size_hint = QSize(640, 480);

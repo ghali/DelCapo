@@ -8,16 +8,16 @@
 #include <algorithm>
 
 // QDelCapo
-#include "../types/number_type.h"
-#include "../types/geometry_types.h"
-#include "../types/color_types.h"
-#include "../types/lighting_constants.h"
+#include "../types/number_type.hpp"
+#include "../types/geometry_types.hpp"
+#include "../types/color_types.hpp"
+#include "../types/lighting_constants.hpp"
 
-#include "maze.h"
-#include "scene.h"
-#include "../opengl/gldraw_e3.h"
-#include "../critters/random.h"
-#include "../critters/two_d_to_three_d.h"
+#include "maze.hpp"
+#include "scene.hpp"
+#include "../opengl/gldraw_e3.hpp"
+#include "../critters/random.hpp"
+#include "../critters/two_d_to_three_d.hpp"
 
 // Maze Constants
 const GLfloat MAZE_OUTER_WALLS_AND_FLOOR_DIFFUSE[] = { 0.0, 0.7, 0.4, 1.0 };
@@ -26,8 +26,8 @@ const GLfloat MAZE_GRAPH_COLOR[] = { 1.0, 0.3, 0.6, 1.0 };
 const GLfloat MAZE_NORMALS_COLOR[] = { 1.0, 1.0, 1.0, 1.0 };
 const MyDouble MAZE_NORMALS_LENGTH = 0.25;
 
-const int MAZE_FLOOR_DIVX = 20;
-const int MAZE_FLOOR_DIVY = 20;
+// const int MAZE_FLOOR_DIVX = 20;
+// const int MAZE_FLOOR_DIVY = 20;
 
 const MyDouble MAZE_WALLS_HEIGHT = 0.2;
 
@@ -215,7 +215,7 @@ Maze::paint_graph()
     // Edges
     typedef My_edge_container::const_iterator Edge_iterator;
     glBegin(GL_LINES); {
-        for(Edge_iterator eit = PG->G.E.begin(); eit != PG->G.E.end(); ++eit) {
+        for(Edge_iterator eit = PG->heds.E.begin(); eit != PG->heds.E.end(); ++eit) {
             // class Planar_Graph is in E2d, but we draw in E3d.
             Point_E2d s = (*eit)->source->info().coords;
             Point_E2d t = (*eit)->target->info().coords;
@@ -229,7 +229,7 @@ Maze::paint_graph()
     glPointSize( 7.0 );
     glEnable(GL_POINT_SMOOTH);
     glBegin(GL_POINTS); {
-        for(Node_iterator nit = PG->G.V.begin(); nit != PG->G.V.end(); ++nit) {
+        for(Node_iterator nit = PG->heds.V.begin(); nit != PG->heds.V.end(); ++nit) {
             // Here also: class Planar_Graph is in E2d, but we draw in E3d.
             Point_E2d i = (*nit)->info().coords;
             glVertex3d(i.x(), i.y(), 0.0);

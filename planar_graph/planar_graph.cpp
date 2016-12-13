@@ -8,9 +8,9 @@
 #include <vector>
 
 // QDelCapo
-#include "../critters/random.h"
-#include "planar_graph.h"
-#include "../opengl/gldraw_e2.h"
+#include "../critters/random.hpp"
+#include "planar_graph.hpp"
+#include "../opengl/gldraw_e2.hpp"
 
 const unsigned int MAZE_SEED = 10;
 const MyDouble NEARLY_PARALLEL = 0.05;
@@ -32,9 +32,9 @@ Planar_Graph::Planar_Graph(const Vector_E2i & vertex_grid,
 My_node_ptr
 Planar_Graph::get_random_node() const
 {
-    const int n = G.V.size();
+    const int n = heds.V.size();
     const int r = get_int_random<int>(n);
-    return G.V[r];
+    return heds.V[r];
 }
 
 // The vertices satisfy the following properties:
@@ -53,8 +53,8 @@ Planar_Graph::generate_maze_vertices()
     for(int x=0; x < vertex_grid.x(); ++x)
         for(int y=0; y < vertex_grid.y(); ++y) {
 
-            if(x % 2 == 1 && y % 2 == 1
-               || x % 2 == 0 && y % 2 == 0)
+            if((x % 2 == 1 && y % 2 == 1)
+               || (x % 2 == 0 && y % 2 == 0))
                 continue;
 
             MyDouble dx = get_real_random( MyDouble(0), MyDouble(0.4) );
@@ -110,7 +110,7 @@ Planar_Graph::convert_delaunay_to_maze(const Delaunay<My_point_E2_input_iterator
         Junction J(p);
         My_node_ptr np(new My_node(J));
         M_nodes[i] = np;
-        G.V.push_back( np );
+        heds.V.push_back( np );
     }
 
     //----------------Graph Edges----------------
@@ -127,15 +127,15 @@ Planar_Graph::convert_delaunay_to_maze(const Delaunay<My_point_E2_input_iterator
                                               M_nodes[k],
                                               Route(M_nodes[i]->info().coords,
                                                     M_nodes[k]->info().coords)) );
-                G.E.push_back( eptr );
+                heds.E.push_back( eptr );
                 M_edges[std::make_pair(i,k)] = eptr;
             } while (k != j);
     }
 
     // Because we use (k2, i) rather than (i, k2), we could delay
     // stitching twins until after pred and succ links are set.
-    G.stitch_twins();
-    G.set_node_outgoing_edge();
+    heds.stitch_twins();
+    heds.set_node_outgoing_edge();
 
     //----------------pred and succ links----------------
     for(int i=0; i<DT.num_points; i++) {
@@ -156,15 +156,15 @@ Planar_Graph::convert_delaunay_to_maze(const Delaunay<My_point_E2_input_iterator
 
     //----------------Graph Faces----------------
     typedef My_edge_container::const_iterator  EdgeP_iterator;
-    for(EdgeP_iterator ei = G.E.begin(); ei != G.E.end(); ++ei)
+    for(EdgeP_iterator ei = heds.E.begin(); ei != heds.E.end(); ++ei)
         (*ei)->adjFace = My_face_ptr();
-    assert( G.number_of_faces() == 0);
-    for(EdgeP_iterator eip = G.E.begin(); eip != G.E.end(); ++eip) {
+    assert( heds.number_of_faces() == 0);
+    for(EdgeP_iterator eip = heds.E.begin(); eip != heds.E.end(); ++eip) {
         const My_edge_ptr ei = (*eip);
         if( ei->adjFace.get() != NULL )
             continue;           // We have already found this halfedge's adjFace.
         My_face_ptr fptr( new My_face(ei, myPolygon()) );
-        G.F.push_back( fptr );
+        heds.F.push_back( fptr );
         My_edge_ptr ej = ei->succ;
         while( ej != ei ) {
             ej->adjFace = fptr;
@@ -208,7 +208,7 @@ Planar_Graph::generate_maze_walls(MyDouble half_width)
 {
     polygons.clear();
     typedef My_face_container::const_iterator  FaceP_iterator;
-    for(FaceP_iterator fi = G.F.begin(); fi != G.F.end(); ++fi) {
+    for(FaceP_iterator fi = heds.F.begin(); fi != heds.F.end(); ++fi) {
 
         const My_edge_ptr ei = (*fi)->edge;
         My_edge_ptr e1 = ei;
@@ -266,22 +266,22 @@ Planar_Graph::generate_maze_walls(MyDouble half_width)
 void
 Planar_Graph::build_boost_graph()
 {
-    const int num_nodes = G.V.size();
+    const int num_nodes = heds.V.size();
     std::vector<Point_E2d> nodes;
     nodes.reserve(num_nodes);
     std::map<My_node_ptr,int> M_nodes;
     for(int v=0; v!=num_nodes; ++v) {
-        My_node_ptr mnp = G.V[v];
+        My_node_ptr mnp = heds.V[v];
         nodes.push_back(mnp->info().coords);
         M_nodes[mnp] = v;
     }
 
-    const int num_edges = G.E.size();
+    const int num_edges = heds.E.size();
     std::vector<Edge> my_edges;
     my_edges.reserve(num_edges);
     MyDouble * weights = new MyDouble[num_edges];
     for(int e=0; e!=num_edges; ++e) {
-        My_edge_ptr mep = G.E[e];
+        My_edge_ptr mep = heds.E[e];
         My_node_ptr s = mep->source;
         My_node_ptr t = mep->target;
         my_edges.push_back( Edge( M_nodes[s], M_nodes[t] ) );
@@ -295,11 +295,11 @@ Planar_Graph::build_boost_graph()
     d.reserve(num_vertices(BG));
     vertex_descriptor s = vertex(0 /*first vertex*/, BG);
 
-    dijkstra_shortest_paths(BG, s, predecessor_map(&p[0]).distance_map(&d[0]));
+    dijkstra_shortest_paths(BG, s, boost::predecessor_map(&p[0]).distance_map(&d[0]));
 
     predecessor.clear();
-    graph_traits < graph_t >::vertex_iterator vi, vend;
-    for (tie(vi, vend) = vertices(BG); vi != vend; ++vi)
+    boost::graph_traits < graph_t >::vertex_iterator vi, vend;
+    for (boost::tie(vi, vend) = vertices(BG); vi != vend; ++vi)
         predecessor.push_back(p[*vi]);
     delete [] weights;
 }
@@ -310,8 +310,8 @@ Planar_Graph::find_nearest(const Point_E2d & mouse)
     MyDouble closest = std::numeric_limits<MyDouble>::max();
     int index = -1;
     MyDouble d;
-    for(unsigned v=0; v!=G.V.size(); ++v)
-        if((d = squared_distance(mouse, G.V[v]->info().coords)) < closest) {
+    for(unsigned v=0; v!=heds.V.size(); ++v)
+        if((d = squared_distance(mouse, heds.V[v]->info().coords)) < closest) {
             index = v;
             closest = d;
         }
@@ -332,8 +332,8 @@ Planar_Graph::draw(bool track_mouse,
 
     if(reveal_tree)
         for(unsigned i=0;i<predecessor.size();++i)
-            GLdraw_E2::draw(G.V[i]->info().coords,
-                            G.V[predecessor[i]]->info().coords,
+            GLdraw_E2::draw(heds.V[i]->info().coords,
+                            heds.V[predecessor[i]]->info().coords,
                             Qt::red, 3.0,
                             true, Qt::red, 7.0);
     else if(track_mouse)
@@ -343,8 +343,8 @@ Planar_Graph::draw(bool track_mouse,
         while(j) {
             int i = j;
             j = predecessor[j];
-            GLdraw_E2::draw(G.V[i]->info().coords,
-                            G.V[j]->info().coords,
+            GLdraw_E2::draw(heds.V[i]->info().coords,
+                            heds.V[j]->info().coords,
                             Qt::red, 3.0,
                             true, Qt::red, 7.0);
         } 

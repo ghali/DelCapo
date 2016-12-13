@@ -1,11 +1,11 @@
 // Sherif Ghali
 
-#include "intelligence.h"
-#include "scene.h"              // included because NUMBER_OF_INTELLIGENCE is needed
+#include "intelligence.hpp"
+#include "scene.hpp"              // included because NUMBER_OF_INTELLIGENCE is needed
 
-#include "../misc/random_e3.h"
-#include "../critters/two_d_to_three_d.h"
-#include "../opengl/gldraw_e3.h"
+#include "../misc/random_e3.hpp"
+#include "../critters/two_d_to_three_d.hpp"
+#include "../opengl/gldraw_e3.hpp"
 
 // Constants
 const GLfloat intelli_diffuse[] = { 1.0, 1.0, 0.0, 1.0,

@@ -1,6 +1,6 @@
 // Sherif Ghali
 
-#include "heds_types.h"
+#include "heds_types.hpp"
 
 // All HEDS classes are parameterized. Here we only have the three
 // non-parameterized overloaded output operators.

@@ -2,11 +2,11 @@
 
 #include <QtOpenGL>
 
-#include "prey.h"
-#include "scene.h"              // included because NUMBER_OF_PREY is needed
-#include "maze.h"
-#include "../types/lighting_constants.h"
-#include "../opengl/gldraw_e3.h"
+#include "prey.hpp"
+#include "scene.hpp"              // included because NUMBER_OF_PREY is needed
+#include "maze.hpp"
+#include "../types/lighting_constants.hpp"
+#include "../opengl/gldraw_e3.hpp"
 
 // Constants
 const GLfloat prey_diffuse[] = { 1.0, 0.0, 0.0, 1.0,
@@ -22,8 +22,8 @@ const MyDouble prey_angular_velocity = 0.075; // radians / second -- normal
 //const MyDouble prey_angular_velocity = 0.035; // radians / second -- slow
 //const MyDouble prey_angular_velocity = 0.015; // radians / second -- ultra slow
 
-const int prey_divisions = 16;
-const MyDouble prey_half_height = 0.2;
+// const int prey_divisions = 16;
+// const MyDouble prey_half_height = 0.2;
 const MyDouble prey_radius = 0.2;
 
 const int PREY_IS_INTELLIGENT_DURATION = 10000; // QTime::elapsed() returns milliseconds.

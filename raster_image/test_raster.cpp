@@ -5,9 +5,9 @@
 #include <iostream>
 using namespace std;
 
-#include "raster_image/array2.h"
-#include "raster_image/image.h"
-#include "raster_image/image_color_4.h"
+#include "raster_image/array2.hpp"
+#include "raster_image/image.hpp"
+#include "raster_image/image_color_4.hpp"
 
 void test_array_bool()
 {

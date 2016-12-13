@@ -6,8 +6,8 @@
 #include <QPushButton>
 #include <QCheckBox>
 
-#include "delcapo/Qdelcapo_window.h"
-#include "delcapo/Qdelcapo_subwindow.h"
+#include "delcapo/Qdelcapo_window.hpp"
+#include "delcapo/Qdelcapo_subwindow.hpp"
 
 const QPoint qdelcapo_hint_to_window_manager(50,20);
 

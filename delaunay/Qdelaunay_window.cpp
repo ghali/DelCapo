@@ -2,11 +2,13 @@
 
 // Qt
 #include <QLCDNumber>
-#include <QtGui>
+#include <QtWidgets>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 // QDelCapo
-#include "Qdelaunay_window.h"
-#include "Qdelaunay_subwindow.h"
+#include "Qdelaunay_window.hpp"
+#include "Qdelaunay_subwindow.hpp"
 
 const QPoint delaunay_hint_to_window_manager(5,25);
 

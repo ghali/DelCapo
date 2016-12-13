@@ -10,11 +10,11 @@
 #include <boost/bind.hpp>
 
 // QDelCapo
-#include "../types/lighting_constants.h"
-#include "../types/geometry_types.h"
-#include "gldraw_e3.h"
-#include "scene.h"
-#include "../delcapo/Qdelcapo_window.h"
+#include "../types/lighting_constants.hpp"
+#include "../types/geometry_types.hpp"
+#include "gldraw_e3.hpp"
+#include "scene.hpp"
+#include "../delcapo/Qdelcapo_window.hpp"
 
 const MyDouble LENGTH_OF_AXES = 10.0;
 

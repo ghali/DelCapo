@@ -1,6 +1,6 @@
 // Sherif Ghali
 
-#include "raster_image/image.h"
+#include "raster_image/image.hpp"
 
 typedef Image<Color_4<float> > ColorImage; // floats range from 0 to 1
 typedef Image<char> GrayscaleImage;

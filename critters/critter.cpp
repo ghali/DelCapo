@@ -1,13 +1,13 @@
 // Sherif Ghali
 
 #include <cmath>
-#include "critter.h"
-#include "../geometry_E2/interpolation_e2.h"
-#include "../misc/random_e3.h"
-#include "random.h"
-#include "maze.h"
+#include "critter.hpp"
+#include "../geometry_E2/interpolation_e2.hpp"
+#include "../misc/random_e3.hpp"
+#include "random.hpp"
+#include "maze.hpp"
 
-#include "two_d_to_three_d.h"
+#include "two_d_to_three_d.hpp"
 
 const MyDouble KNOCKING_OUT_IMPACT_LENGTH = 0.5;
 const MyDouble KNOCKING_OUT_LENGTH = 5.0;
@@ -149,8 +149,8 @@ Critter::move()
             handle_turn_at_node(N);
             check_collision_with_intelligence(N);
             
-            cout << endl << "Crossing node " << N << endl;
-            maze->list_intelligence_at_nodes();
+            // cout << endl << "Crossing node " << N << endl;
+            // maze->list_intelligence_at_nodes();
 
             // handle_turn_at_node(N) updated edge; therefore the edge
             // referenced in initialize_critter_on_new_edge() is

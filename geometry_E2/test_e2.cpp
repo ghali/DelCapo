@@ -2,22 +2,22 @@
 
 #include <cassert>
 
-#include "geometry_E2/bbox_e2.h"
+#include "geometry_E2/bbox_e2.hpp"
 
-#include "geometry_E2/point_e2.h"
-#include "geometry_E2/vector_e2.h"
-#include "geometry_E2/direction_e2.h"
-#include "geometry_E2/segment_e2.h"
-#include "geometry_E2/line_e2.h"
-#include "geometry_E2/triangle_e2.h"
-#include "geometry_E2/polygon_e2.h"
+#include "geometry_E2/point_e2.hpp"
+#include "geometry_E2/vector_e2.hpp"
+#include "geometry_E2/direction_e2.hpp"
+#include "geometry_E2/segment_e2.hpp"
+#include "geometry_E2/line_e2.hpp"
+#include "geometry_E2/triangle_e2.hpp"
+#include "geometry_E2/polygon_e2.hpp"
 
-#include "misc/epsilon_double.h"
-#include "geometry_E2/transformation_e2.h"
-#include "geometry_E2/interpolation_e2.h"
+#include "misc/epsilon_double.hpp"
+#include "geometry_E2/transformation_e2.hpp"
+#include "geometry_E2/interpolation_e2.hpp"
 
-#include "geometry_E2/predicates_e2.h"
-#include "geometry_E2/intersection_e2.h"
+#include "geometry_E2/predicates_e2.hpp"
+#include "geometry_E2/intersection_e2.hpp"
 
 typedef Epsilon_double MyDouble;
 

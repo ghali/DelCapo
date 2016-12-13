@@ -5,13 +5,14 @@
 
 #include <QtOpenGL>
 
-// #include "xplatform_glut.h"
+// #include "xplatform_glut.hpp"
 
-#include "gldraw.h"
+#include "gldraw.hpp"
 
 void
 GLdraw::check_errors()
 {
+#ifdef DO_CHECK_ERRORS
     GLenum errorCode = 0;
     bool errorFound = false;
     while((errorCode = glGetError()) != GL_NO_ERROR) {
@@ -21,6 +22,7 @@ GLdraw::check_errors()
     }
     if(errorFound)
         throw std::domain_error("glGetError senses trouble brewing.");
+#endif
 }
 
 void

@@ -3,18 +3,18 @@
 #include <cassert>
 #include <iostream>
 
-#include "geometry_E3/bbox_e3.h"
+#include "geometry_E3/bbox_e3.hpp"
 
-#include "misc/epsilon_double.h"
-#include "geometry_E3/point_e3.h"
-#include "geometry_E3/vector_e3.h"
-#include "geometry_E3/direction_e3.h"
-#include "geometry_E3/transformation_e3.h"
-#include "geometry_E3/polygon_e3.h"
+#include "misc/epsilon_double.hpp"
+#include "geometry_E3/point_e3.hpp"
+#include "geometry_E3/vector_e3.hpp"
+#include "geometry_E3/direction_e3.hpp"
+#include "geometry_E3/transformation_e3.hpp"
+#include "geometry_E3/polygon_e3.hpp"
 
-#include "geometry_E3/predicates_e3.h"
-#include "geometry_E3/polygon_normal_e3.h"
-#include "geometry_E3/interpolation_e3.h"
+#include "geometry_E3/predicates_e3.hpp"
+#include "geometry_E3/polygon_normal_e3.hpp"
+#include "geometry_E3/interpolation_e3.hpp"
 
 typedef Epsilon_double MyDouble;
 

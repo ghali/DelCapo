@@ -3,16 +3,29 @@
 ######################################################################
 
 TEMPLATE = app
+QT      += widgets
 QT      += opengl
+QT      += printsupport
+
+# don't: CONFIG += c++11
 
 win32:INCLUDEPATH += C:/boost_1_50_0
 mac:INCLUDEPATH   += /opt/local/include
+
+# QMAKE_CXXFLAGS += -std=c++11 -stdlib=libc++ -Weverything -Wno-c++98-compat
+# no-unused-parameter is unfortunately necessary with Boost 1_50/51 and Clang++.
+
+# QMAKE_CXXFLAGS += -Wno-unused-parameter
+# QMAKE_CXXFLAGS += -Wunused-local-typedef
+
+QMAKE_CXXFLAGS_WARN_ON = -Wall -Wno-unused-parameter -Wno-unused-local-typedef
+
 
 # On Windows, we must set the PATH to:
 #     C:/QtSDK/mingw/bin/:C:/QtSDK/Desktop/Qt/4.8.1/mingw/bin
 # no need: win32:LIBS += ...
 
-TARGET = 
+TARGET = DelCapo
 DEPENDPATH += . \
               critters \
               delaunay \
@@ -45,93 +58,93 @@ INCLUDEPATH += . \
                delcapo
 
 # Input
-HEADERS += critters/critter.h \
-           critters/intelligence.h \
-           critters/player.h \
-           critters/prey.h \
-           critters/random.h \
-           critters/two_d_to_three_d.h \
-           delaunay/delaunay.h \
-           delaunay/Qdelaunay_subwindow.h \
-           delaunay/Qdelaunay_window.h \
-           delcapo/Qdelcapo_subwindow.h \
-           delcapo/Qdelcapo_window.h \
-           geometry_E2/bbox_e2.h \
-           geometry_E2/circle_e2.h \
-           geometry_E2/convex_polygon_e2.h \
-           geometry_E2/direction_e2.h \
-           geometry_E2/dominant_e2.h \
-           geometry_E2/geometry_e2.h \
-           geometry_E2/interpolation_e2.h \
-           geometry_E2/intersection_e2.h \
-           geometry_E2/line_e2.h \
-           geometry_E2/point_e2.h \
-           geometry_E2/polygon_e2.h \
-           geometry_E2/predicates_e2.h \
-           geometry_E2/projection_e2.h \
-           geometry_E2/ray_e2.h \
-           geometry_E2/segment_e2.h \
-           geometry_E2/transformation_e2.h \
-           geometry_E2/triangle_e2.h \
-           geometry_E2/vector_e2.h \
-           geometry_E3/bbox_e3.h \
-           geometry_E3/direction_e3.h \
-           geometry_E3/dominant_e3.h \
-           geometry_E3/interpolation_e3.h \
-           geometry_E3/line_e3.h \
-           geometry_E3/normalize_e3.h \
-           geometry_E3/plane_e3.h \
-           geometry_E3/point_e3.h \
-           geometry_E3/polygon_e3.h \
-           geometry_E3/polygon_normal_e3.h \
-           geometry_E3/predicates_e3.h \
-           geometry_E3/projection_e3.h \
-           geometry_E3/ray_e3.h \
-           geometry_E3/segment_e3.h \
-           geometry_E3/transformation_e3.h \
-           geometry_E3/triangle_e3.h \
-           geometry_E3/vector_e3.h \
-           geometry_lib/transformations.h \
-           geometry_T3/direction_t3.h \
-           geometry_T3/intersection_t3.h \
-           geometry_T3/line_t3.h \
-           geometry_T3/perspective_divide_t3.h \
-           geometry_T3/plane_t3.h \
-           geometry_T3/point_t3.h \
-           geometry_T3/predicates_t3.h \
-           geometry_T3/segment_t3.h \
-           geometry_T3/transformation_t3.h \
-           geometry_T3/unit_cube_intersections_t3.h \
-           geometry_T3/vector_t3.h \
-           misc/color_3.h \
-           misc/color_4.h \
-           misc/conversions.h \
-           misc/determinant.h \
-           misc/epsilon_double.h \
-           misc/orientation.h \
-           misc/random_e2.h \
-           misc/random_e3.h \
-           opengl/gldraw.h \
-           opengl/gldraw_e2.h \
-           opengl/gldraw_e3.h \
-           opengl/glimagewriter.h \
-           planar_graph/planar_graph.h \
-           raster_image/array2.h \
-           raster_image/image.h \
-           raster_image/image_color_4.h \
-           scene/maze.h \
-           scene/scene.h \
-           solid_heds/face.h \
-           solid_heds/halfedge.h \
-           solid_heds/heds.h \
-           solid_heds/heds_reader.h \
-           solid_heds/node.h \
-           types/color_types.h \
-           types/geometry_types.h \
-           types/heds_types.h \
-           types/lighting_constants.h \
-           types/number_type.h \
-           types/ptr_types.h
+HEADERS += critters/critter.hpp \
+           critters/intelligence.hpp \
+           critters/player.hpp \
+           critters/prey.hpp \
+           critters/random.hpp \
+           critters/two_d_to_three_d.hpp \
+           delaunay/delaunay.hpp \
+           delaunay/Qdelaunay_subwindow.hpp \
+           delaunay/Qdelaunay_window.hpp \
+           delcapo/Qdelcapo_subwindow.hpp \
+           delcapo/Qdelcapo_window.hpp \
+           geometry_E2/bbox_e2.hpp \
+           geometry_E2/circle_e2.hpp \
+           geometry_E2/convex_polygon_e2.hpp \
+           geometry_E2/direction_e2.hpp \
+           geometry_E2/dominant_e2.hpp \
+           geometry_E2/geometry_e2.hpp \
+           geometry_E2/interpolation_e2.hpp \
+           geometry_E2/intersection_e2.hpp \
+           geometry_E2/line_e2.hpp \
+           geometry_E2/point_e2.hpp \
+           geometry_E2/polygon_e2.hpp \
+           geometry_E2/predicates_e2.hpp \
+           geometry_E2/projection_e2.hpp \
+           geometry_E2/ray_e2.hpp \
+           geometry_E2/segment_e2.hpp \
+           geometry_E2/transformation_e2.hpp \
+           geometry_E2/triangle_e2.hpp \
+           geometry_E2/vector_e2.hpp \
+           geometry_E3/bbox_e3.hpp \
+           geometry_E3/direction_e3.hpp \
+           geometry_E3/dominant_e3.hpp \
+           geometry_E3/interpolation_e3.hpp \
+           geometry_E3/line_e3.hpp \
+           geometry_E3/normalize_e3.hpp \
+           geometry_E3/plane_e3.hpp \
+           geometry_E3/point_e3.hpp \
+           geometry_E3/polygon_e3.hpp \
+           geometry_E3/polygon_normal_e3.hpp \
+           geometry_E3/predicates_e3.hpp \
+           geometry_E3/projection_e3.hpp \
+           geometry_E3/ray_e3.hpp \
+           geometry_E3/segment_e3.hpp \
+           geometry_E3/transformation_e3.hpp \
+           geometry_E3/triangle_e3.hpp \
+           geometry_E3/vector_e3.hpp \
+           geometry_lib/transformations.hpp \
+           geometry_T3/direction_t3.hpp \
+           geometry_T3/intersection_t3.hpp \
+           geometry_T3/line_t3.hpp \
+           geometry_T3/perspective_divide_t3.hpp \
+           geometry_T3/plane_t3.hpp \
+           geometry_T3/point_t3.hpp \
+           geometry_T3/predicates_t3.hpp \
+           geometry_T3/segment_t3.hpp \
+           geometry_T3/transformation_t3.hpp \
+           geometry_T3/unit_cube_intersections_t3.hpp \
+           geometry_T3/vector_t3.hpp \
+           misc/color_3.hpp \
+           misc/color_4.hpp \
+           misc/conversions.hpp \
+           misc/determinant.hpp \
+           misc/epsilon_double.hpp \
+           misc/orientation.hpp \
+           misc/random_e2.hpp \
+           misc/random_e3.hpp \
+           opengl/gldraw.hpp \
+           opengl/gldraw_e2.hpp \
+           opengl/gldraw_e3.hpp \
+           opengl/glimagewriter.hpp \
+           planar_graph/planar_graph.hpp \
+           raster_image/array2.hpp \
+           raster_image/image.hpp \
+           raster_image/image_color_4.hpp \
+           scene/maze.hpp \
+           scene/scene.hpp \
+           solid_heds/face.hpp \
+           solid_heds/halfedge.hpp \
+           solid_heds/heds.hpp \
+           solid_heds/heds_reader.hpp \
+           solid_heds/node.hpp \
+           types/color_types.hpp \
+           types/geometry_types.hpp \
+           types/heds_types.hpp \
+           types/lighting_constants.hpp \
+           types/number_type.hpp \
+           types/ptr_types.hpp
 SOURCES += main.cpp \
            critters/critter.cpp \
            critters/intelligence.cpp \

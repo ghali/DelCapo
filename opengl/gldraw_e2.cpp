@@ -1,13 +1,13 @@
 // Sherif Ghali
 
-#include "gldraw_e2.h"
+#include "gldraw_e2.hpp"
 
 #include <vector>
 
-#include "misc/conversions.h"
-#include "geometry_E2/point_e2.h"
-#include "geometry_E2/segment_e2.h"
-#include "geometry_E2/polygon_e2.h"
+#include "misc/conversions.hpp"
+#include "geometry_E2/point_e2.hpp"
+#include "geometry_E2/segment_e2.hpp"
+#include "geometry_E2/polygon_e2.hpp"
 
 void
 GLdraw_E2::draw(const std::vector<Point_E2d> & points,
@@ -157,11 +157,12 @@ GLdraw_E2::draw_polyline(const Polygon_E2d & polygon,
     if(drawEndpoints) {
         for(unsigned int i = 0; i != polygon.size(); ++i) {
             glBegin(GL_POINTS); {
-                if(two_colors)
+                if(two_colors) {
                     if(i%mod_for_first == 0)
                         set_color(pointColor1);
                     else
                         set_color(pointColor2);
+                }
                 glVertex2f( to_float(polygon[i].x()), to_float(polygon[i].y()) );
             } glEnd();
         }
